@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Event Optimizer
+Comment=Event Business Ad Optimizer
+Exec=streamlit run "Event Optimizer.py"
+Icon=icon.svg
+Terminal=false
+Categories=Office;Finance;
