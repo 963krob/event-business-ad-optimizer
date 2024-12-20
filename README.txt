@@ -54,7 +54,7 @@ Running the Application
 Alternative Method (Command Line):
 1. Open a terminal/command prompt
 2. Navigate to the event_optimizer directory
-3. Run: streamlit run "Event Optimizer.py"
+3. Run: streamlit run streamlit_app.py
 
 Using the Application
 -------------------
@@ -65,7 +65,7 @@ Using the Application
 
 Files
 -----
-- Event Optimizer.py: Main application file
+- streamlit_app.py: Main application file
 - launch_optimizer.bat: Windows launcher script
 - launch_optimizer.sh: macOS/Linux launcher script
 - icon.svg: Application icon

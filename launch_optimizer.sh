@@ -1,2 +1,2 @@
 #!/bin/bash
-streamlit run "Event Optimizer.py"
+streamlit run streamlit_app.py

@@ -1,2 +1,2 @@
 @echo off
-start /b streamlit run "Event Optimizer.py"
+start /b streamlit run streamlit_app.py
