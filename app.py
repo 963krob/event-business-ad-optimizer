@@ -573,7 +573,7 @@ with left_col:
         "Venue Capacity",
         key="venue_capacity",
         min_value=1,
-        value=0,
+        value=1,
         step=10,
         help="Maximum number of tickets that can be sold per event. Must be at least 1."
     )
@@ -584,7 +584,7 @@ with left_col:
         "Number of Events per Month",
         key="events_per_month",
         min_value=1,
-        value=0,
+        value=1,
         step=1,
         help="How many events you plan to run each month. Must be at least 1."
     )
