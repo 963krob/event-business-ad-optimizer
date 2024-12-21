@@ -4,9 +4,25 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-# Initialize session state
-if 'scenarios' not in st.session_state:
-    st.session_state.scenarios = {}
+# Initialize all session state variables
+defaults = {
+    "scenarios": {},
+    "fixed_costs": 0.0,
+    "event_cost": 0.0,
+    "ticket_price_pre": 0.0,
+    "ticket_price_post": 0.0,
+    "venue_capacity": 0,
+    "events_per_month": 0,
+    "attendance_percentage": 50,
+    "sales_mix_pre": 50,
+    "ad_spend": 0.0,
+    "tickets_sold": 0,
+    "historical_attendance": 0
+}
+
+for key, value in defaults.items():
+    if key not in st.session_state:
+        st.session_state[key] = value
 
 def save_scenario(name: str, values: dict) -> bool:
     """
