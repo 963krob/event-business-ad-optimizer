@@ -4,28 +4,13 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-# Initialize session state for scenarios
+# Initialize session state
 if 'scenarios' not in st.session_state:
     st.session_state.scenarios = {}
 
-# Ensure scenarios directory exists
-SCENARIOS_DIR = Path("scenarios")
-SCENARIOS_DIR.mkdir(exist_ok=True)
-SCENARIOS_FILE = SCENARIOS_DIR / "saved_scenarios.json"
-
-def load_saved_scenarios():
-    """Load saved scenarios from JSON file."""
-    if SCENARIOS_FILE.exists():
-        try:
-            with open(SCENARIOS_FILE, 'r') as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            return {}
-    return {}
-
 def save_scenario(name: str, values: dict) -> bool:
     """
-    Save current scenario to JSON file with a custom name.
+    Save current scenario to session state with a custom name.
     
     Args:
         name (str): User-provided name for the scenario
@@ -34,21 +19,13 @@ def save_scenario(name: str, values: dict) -> bool:
     Returns:
         bool: True if save was successful, False if name already exists
     """
-    scenarios = load_saved_scenarios()
-    
     # Check if name already exists
-    if name in scenarios:
+    if name in st.session_state.scenarios:
         return False
     
     # Add timestamp to values for reference
     values["saved_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    scenarios[name] = values
-    
-    # Save with pretty formatting
-    with open(SCENARIOS_FILE, 'w') as f:
-        json.dump(scenarios, f, indent=2, sort_keys=True)
-    
-    st.session_state.scenarios = scenarios
+    st.session_state.scenarios[name] = values
     return True
 
 def get_current_values():
@@ -341,8 +318,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Load saved scenarios at startup
-st.session_state.scenarios = load_saved_scenarios()
+# Initialize scenarios if not present
+if 'scenarios' not in st.session_state:
+    st.session_state.scenarios = {}
 
 # Main title and help section
 st.markdown("<h1 class='main-header'>Event Business Ad Optimizer</h1>", unsafe_allow_html=True)
