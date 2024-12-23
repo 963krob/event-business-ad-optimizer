@@ -102,5 +102,3 @@ def test_thresholds():
     for attendance, (roas, cpp) in thresholds.items():
         print(f"{attendance:<12} {roas:,.2f}x{' ' * 13} ${cpp:,.2f}", flush=True)
 
-if __name__ == "__main__":
-    test_thresholds()
